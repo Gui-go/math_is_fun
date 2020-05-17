@@ -31,6 +31,14 @@ ui <- fluidPage(
              max = 30, 
              step = 1
            ),
+           numericInput(
+             inputId = "alpha_ui", 
+             label = "Alpha", 
+             value = 1,
+             min = 0, 
+             max = 1, 
+             step = 0.1
+           ),
            selectInput(
              inputId = "lncolor_ui", 
              label = "Background color", 
@@ -42,7 +50,7 @@ ui <- fluidPage(
              inputId = "bkcolor_ui", 
              label = "Background color", 
              choices = c("black", "white", "blue", "red"), 
-             selected = "white", 
+             selected = "black", 
              multiple = F
            )
     ),
@@ -65,7 +73,7 @@ server <- function(input, output) {
     y <- cos(t)
     df <- data.frame(t, x, y)
     p <- ggplot(df, aes(x*t, y*t))
-    p + geom_point(size = 80, alpha = 0.1, shape = input$shape_ui, color = input$lncolor_ui)+
+    p + geom_point(size = 80, alpha = input$alpha_ui, shape = input$shape_ui, color = input$lncolor_ui)+
       theme(legend.position="none",
             panel.background = element_rect(fill = input$bkcolor_ui),
             panel.grid=element_blank(),
