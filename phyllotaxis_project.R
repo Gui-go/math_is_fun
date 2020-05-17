@@ -108,3 +108,7 @@ p + geom_point(size = 80, alpha = 0.1, shape = 1, color = "magenta4")+
         axis.title=element_blank(),
         axis.text=element_blank())
 
+
+# rascunho ----------------------------------------------------------------
+
+colours()
